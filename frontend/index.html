@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartDoc Extractor </title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="animated-bg">
+        <div class="gradient-sphere sphere-1"></div>
+        <div class="gradient-sphere sphere-2"></div>
+        <div class="gradient-sphere sphere-3"></div>
+    </div>
+    
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <span>SmartDoc</span>
+                <span class="logo-highlight">Extractor</span>
+            </div>
+            <div class="nav-stats">
+                <div class="stat-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span id="totalDocuments">0</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-user-check"></i>
+                    <span id="totalNames">0</span>
+                </div>
+            </div>
+        </nav>
+        
+        <header class="hero">
+            <div class="hero-badge">
+                <i class="fas fa-magic"></i>
+                <span>AI-Powered Extraction</span>
+            </div>
+            <h1 class="hero-title">
+                Extract Names & Phone Numbers
+                <span class="gradient-text">Instantly</span>
+            </h1>
+            <p class="hero-subtitle">
+                Upload images or PDFs and let our AI extract all names and phone numbers automatically
+            </p>
+        </header>
+        
+        <div class="upload-section">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon-wrapper">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h3>Drop your file here</h3>
+                <p>or click to browse</p>
+                <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                <button class="browse-btn" onclick="document.getElementById('fileInput').click()">
+                    <i class="fas fa-folder-open"></i>
+                    Choose File
+                </button>
+                <div class="file-types">
+                    <span><i class="fas fa-file-image"></i> JPG, PNG</span>
+                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                    <span><i class="fas fa-database"></i> Max 10MB</span>
+                </div>
+            </div>
+            <div id="fileInfo" class="file-info"></div>
+        </div>
+        
+        <div id="loading" class="loading" style="display: none;">
+            <div class="loading-card">
+                <div class="spinner"></div>
+                <h3>Processing your document</h3>
+                <p>Our AI is extracting names and phone numbers...</p>
+                <div class="processing-steps">
+                    <div class="step active">
+                        <i class="fas fa-file-upload"></i>
+                        <span>Uploaded</span>
+                    </div>
+                    <div class="step">
+                        <i class="fas fa-microchip"></i>
+                        <span>Processing</span>
+                    </div>
+                    <div class="step">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Extracting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="result" class="result" style="display: none;">
+            <div class="result-header">
+                <div class="result-title">
+                    <i class="fas fa-check-circle"></i>
+                    <h2>Extraction Complete</h2>
+                </div>
+                <button class="close-result" onclick="closeResult()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="extractedPairs" class="extracted-pairs"></div>
+            <div class="preview">
+                <div class="preview-header">
+                    <i class="fas fa-code"></i>
+                    <h3>Raw Extracted Text</h3>
+                    <button class="copy-btn" onclick="copyExtractedText()">
+                        <i class="fas fa-copy"></i>
+                        Copy
+                    </button>
+                </div>
+                <pre id="extractedText"></pre>
+            </div>
+        </div>
+        
+        <div class="records-section">
+            <div class="records-header">
+                <div class="records-title">
+                    <i class="fas fa-history"></i>
+                    <h2>Document History</h2>
+                </div>
+                <div class="records-actions">
+                    <button id="refreshRecords" class="action-btn refresh-btn">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh
+                    </button>
+                    <button id="clearRecords" class="action-btn clear-btn">
+                        <i class="fas fa-trash-alt"></i>
+                        Clear All
+                    </button>
+                </div>
+            </div>
+            <div id="recordsList" class="records-list">
+                <div class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <p>No documents processed yet</p>
+                    <span>Upload your first document to get started</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
