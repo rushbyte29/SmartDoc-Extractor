@@ -39,5 +39,5 @@ An AI-powered web application that extracts names and phone numbers from images 
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/document-extractor.git
+git clone https://github.com/rushbyte29/document-extractor.git
 cd document-extractor
